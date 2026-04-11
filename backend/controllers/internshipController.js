@@ -22,7 +22,7 @@ exports.getInternships = async (req, res) => {
     filters.location = req.query.location;
   }
 
-  const internships = await Internship.find(filters).populate(
+  const internships = await Internship.find(filters).populate(     //explain this very line
     "createdBy",
     "name email"
   );

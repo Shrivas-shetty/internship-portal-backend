@@ -9,6 +9,6 @@ const {
 const router = express.Router();
 
 router.post("/:internshipId", protect, applyInternship);
-router.get("/my", protect, getMyApplications);
+router.get("/myApplications", protect, getMyApplications);
 
 module.exports = router;

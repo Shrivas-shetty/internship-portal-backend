@@ -1,14 +1,17 @@
 const express = require("express");
 const protect = require("../middleware/authMiddleware");
-const adminOnly = require("../middleware/adminMiddleware");
+const recruiterOnly = require("../middleware/recruiterMiddleware");
+
+
 const {
   createInternship,
   getInternships,
 } = require("../controllers/internshipController");
 
+
 const router = express.Router();
 
-router.get("/", getInternships);
-router.post("/", protect, adminOnly, createInternship);
+router.get("/", protect, getInternships);
+router.post("/", protect, recruiterOnly, createInternship);
 
 module.exports = router;

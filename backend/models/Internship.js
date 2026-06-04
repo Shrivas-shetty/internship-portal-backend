@@ -1,5 +1,5 @@
-const mongoose = require("mongoose");
 
+const mongoose = require("mongoose");
 const internshipSchema = new mongoose.Schema(
   {
     title: {
@@ -20,6 +20,10 @@ const internshipSchema = new mongoose.Schema(
     },
     stipend: {
       type: Number,
+    },
+    duration: {
+      type: String,
+      required: true,
     },
     createdBy: {
       type: mongoose.Schema.Types.ObjectId,

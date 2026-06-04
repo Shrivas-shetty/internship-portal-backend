@@ -7,7 +7,7 @@ export default function MyApplications() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    API.get("/applications/my")
+    API.get("/applications/myApplications")
       .then((res) => {
         setApplications(res.data);
         setLoading(false);

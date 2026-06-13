@@ -1,7 +1,7 @@
 import axios from "axios";                              //http client
 
 const API = axios.create({                              //axios object
-  baseURL: "https://internship-portal-backend-gamma.vercel.app",
+  baseURL: "https://internship-portal-backend-pvl6.onrender.com",
   withCredentials: true
 });
 

@@ -24,7 +24,7 @@ export default function Login() {
         navigate("/admin/home");
     } catch (err) {
       console.error(err);
-      const message = err.response?.data?.message || "Login failed. Please check your credentials.";
+      const message = err.response?.data?.message || "Login failed. Please check your credentials."; //displays this rhs message
       alert(message);
     }
   };

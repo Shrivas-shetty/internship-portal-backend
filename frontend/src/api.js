@@ -1,7 +1,7 @@
 import axios from "axios";                              //http client
 
 const API = axios.create({                              //axios object
-  baseURL: "http://localhost:5000/api",
+  baseURL: process.env.REACT_APP_API_URL,
 });
 
 API.interceptors.request.use((req) => {                  //attach jwt to req

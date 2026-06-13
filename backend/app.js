@@ -5,7 +5,13 @@ const cors = require("cors");
 
 
 
-app.use(cors());
+app.use(cors({
+  origin: [
+    "http://localhost:3000",
+    "https://your-vercel-app.vercel.app"
+  ],
+  credentials: true
+}));
 
 // Middleware
 app.use(express.json());

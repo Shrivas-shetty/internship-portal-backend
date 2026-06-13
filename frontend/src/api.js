@@ -7,8 +7,6 @@ const API = axios.create({                              //axios object
 
 API.interceptors.request.use((req) => {                  //attach jwt to req
   const token = localStorage.getItem("token");
-  console.log("API URL:", process.env.REACT_APP_API_URL);
-
   if (token) {
     req.headers.Authorization = `Bearer ${token}`;
   }

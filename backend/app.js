@@ -8,7 +8,7 @@ const cors = require("cors");
 app.use(cors({
   origin: [
     "http://localhost:3000",
-    "https://your-vercel-app.vercel.app"
+    "https://internship-portal-backend-gamma.vercel.app"
   ],
   credentials: true
 }));

@@ -2,7 +2,8 @@ import { useState } from "react";
 import API from "../api";
 import { useNavigate } from "react-router-dom";
 
-export default function AdminCreateInternship() {
+export default function RecruiterCreateInternship() {
+  // 1. Define an initial state object for easy resetting
   const initialFormState = {
     title: "",
     company: "",
@@ -28,8 +29,9 @@ export default function AdminCreateInternship() {
       await API.post("/internships", formData);
       alert("Internship created");
       
-      // Reset the state to clear the controlled input elements
+      // 2. Clear the form fields by resetting the state on success
       setFormData(initialFormState);
+      
     } catch (err) {
       const message=err.response?.data?.message || "Only admins/recruiters can create internships";
       alert(message);
@@ -37,10 +39,7 @@ export default function AdminCreateInternship() {
   };
 
   return (
-    /* Outer container to force center alignment on the entire screen */
     <div style={{ display: "flex", justifyContent: "center", alignItems: "center", minHeight: "90vh", padding: "20px" }}>
-      
-      {/* box wrapping the creation form */}
       <div style={{ border: "1px solid #000", padding: "25px", width: "320px", textAlign: "center" }}>
         
         <h2>Create Internship</h2>
@@ -50,7 +49,7 @@ export default function AdminCreateInternship() {
             <input 
               name="title" 
               placeholder="Title" 
-              value={formData.title}
+              value={formData.title} // 3. Tied value to state
               onChange={changeHandler} 
               style={{ width: "90%", padding: "5px" }}
             />
@@ -60,7 +59,7 @@ export default function AdminCreateInternship() {
             <input 
               name="company" 
               placeholder="Company" 
-              value={formData.company}
+              value={formData.company} // 3. Tied value to state
               onChange={changeHandler} 
               style={{ width: "90%", padding: "5px" }}
             />
@@ -70,7 +69,7 @@ export default function AdminCreateInternship() {
             <input 
               name="location" 
               placeholder="Location" 
-              value={formData.location}
+              value={formData.location} // 3. Tied value to state
               onChange={changeHandler} 
               style={{ width: "90%", padding: "5px" }}
             />
@@ -80,7 +79,7 @@ export default function AdminCreateInternship() {
             <textarea
               name="description"
               placeholder="Description"
-              value={formData.description}
+              value={formData.description} // 3. Tied value to state
               onChange={changeHandler}
               style={{ width: "90%", padding: "5px", height: "60px", fontFamily: "sans-serif" }}
             />
@@ -89,8 +88,8 @@ export default function AdminCreateInternship() {
           <div style={{ marginBottom: "10px" }}>
             <input
               name="stipend"
-              placeholder="Stipend"
-              value={formData.stipend}
+              placeholder="Stipend per month"
+              value={formData.stipend} // 3. Tied value to state
               onChange={changeHandler}
               style={{ width: "90%", padding: "5px" }}
             />
@@ -100,21 +99,21 @@ export default function AdminCreateInternship() {
             <input 
               name="duration" 
               placeholder="Duration" 
-              value={formData.duration}
+              value={formData.duration} // 3. Tied value to state
               onChange={changeHandler} 
               style={{ width: "90%", padding: "5px" }}
             />
           </div>
 
-          <button type="submit" style={{ width: "95%", padding: "6px", marginBottom: "10px", cursor: "pointer" }}>
+          <button type="submit" style={{ width: "95%", padding: "6px", marginBottom: "10px" }}>
             Add Internship
           </button>
         </form>
 
         <button 
           type="button" 
-          onClick={() => navigate("/admin/home")} 
-          style={{ width: "95%", padding: "6px", cursor: "pointer" }}
+          onClick={() => navigate("/recruiter/home")} 
+          style={{ width: "95%", padding: "6px" }}
         >
           Back to home
         </button>

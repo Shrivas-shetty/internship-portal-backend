@@ -26,6 +26,10 @@ const userSchema = new mongoose.Schema(
       type: String,
       default: "NA",
     },
+    resume_link: {
+      type: String,
+      default: "NA",
+    },
   },
   { timestamps: true }
 );

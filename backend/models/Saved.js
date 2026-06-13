@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const applicationSchema = new mongoose.Schema(
+const savedSchema = new mongoose.Schema(
   {
     internship: {
       type: mongoose.Schema.Types.ObjectId,
@@ -12,19 +12,14 @@ const applicationSchema = new mongoose.Schema(
       ref: "User",
       required: true,
     },
-    status: {
-      type: String,
-      enum: ["pending", "accepted", "rejected"],
-      default: "pending",
-    },
-    shortlisted: {
-      type: Boolean,
-      default: false,
-    },
   },
   { timestamps: true }
 );
 
+// prevent duplicate saving of internships
+savedSchema.index(
+  { internship: 1, applicant: 1 },
+  { unique: true }
+);
 
-
-module.exports = mongoose.model("Application", applicationSchema);
+module.exports = mongoose.model("Saved", savedSchema);

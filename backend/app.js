@@ -10,7 +10,13 @@ app.use(express.json());
 
 app.use("/api/auth", require("./routes/authRoutes"));
 app.use("/api/internships", require("./routes/internshipRoutes"));
+
 app.use("/api/applications", require("./routes/applicationRoutes"));
+app.use("/api/saves", require("./routes/saveRoutes"));
+
+app.use("/api/offers", require("./routes/offerRoutes.js"));
+
+
 app.use("/api/admin", require("./routes/adminRoutes"));
 
 // Test route

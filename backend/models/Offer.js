@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const applicationSchema = new mongoose.Schema(
+const offerSchema = new mongoose.Schema(
   {
     internship: {
       type: mongoose.Schema.Types.ObjectId,
@@ -17,14 +17,14 @@ const applicationSchema = new mongoose.Schema(
       enum: ["pending", "accepted", "rejected"],
       default: "pending",
     },
-    shortlisted: {
-      type: Boolean,
-      default: false,
-    },
   },
   { timestamps: true }
 );
 
+// prevent duplicate applications
+offerSchema.index(
+  { internship: 1, applicant: 1 },
+  { unique: true }
+);
 
-
-module.exports = mongoose.model("Application", applicationSchema);
+module.exports = mongoose.model("Offer", offerSchema);

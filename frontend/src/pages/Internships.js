@@ -31,7 +31,8 @@ export default function Internships() {
       alert("Saved");
     } catch (err) {
       console.error(err);
-      alert("Failed to save.");
+      const message=err.response?.data?.message || "Failed to save.";
+      alert(message);
     }
   };
 

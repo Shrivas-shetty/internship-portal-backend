@@ -5,7 +5,10 @@ const cors = require("cors");
 
 
 
-app.use(cors());
+app.use(cors({
+  origin: ["https://internship-portal-backend-three.vercel.app/"],
+  credentials: true
+}));
 
 // Middleware
 app.use(express.json());

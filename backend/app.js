@@ -3,10 +3,6 @@ const express = require("express");
 const app = express();
 const cors = require("cors");
 
-app.use((req, res, next) => {
-  console.log("Origin:", req.headers.origin);
-  next();
-});
 
 app.use(cors({
   origin: ["https://internship-portal-backend-three.vercel.app"],

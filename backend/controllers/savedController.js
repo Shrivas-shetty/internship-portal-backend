@@ -24,10 +24,10 @@ exports.saveInternship=async (req,res) => {
         if (error.code === 11000) {
             return res
              .status(400)
-             .json({ message: "Already applied to this internship" });
-             console.log("Error : Already applied");
+             .json({ message: "Already saved this internship" });
+             console.log("Error : Already saved");
         }
-    return res.status(500).json({ message: "Application failed" });
+    return res.status(500).json({ message: "Saving failed" });
     }
 
 }

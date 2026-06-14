@@ -24,7 +24,7 @@ export default function RecruiterApplications() {
       .then(() => {
         alert("Application shortlisted");
 
-        // ✅ FIX: update shortlisted (NOT status)
+        // FIX: update shortlisted (NOT status)
         setApplications((prev) =>
           prev.map((app) =>
             app._id === id ? { ...app, shortlisted: true } : app
@@ -117,7 +117,7 @@ export default function RecruiterApplications() {
           {app.status === "pending" && (
             <div style={{ display: "flex", gap: "40px" }}>
               
-              {/* ✅ FIX: boolean check (NOT string) */}
+              {/*  FIX: boolean check (NOT string) */}
               {!app.shortlisted && (
                 <button
                   onClick={() => handleShortlist(app._id)}

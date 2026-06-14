@@ -69,6 +69,12 @@ const Instructions = () => {
               Avoid sending multiple offers to students for the same internship simultaneously.
             </li>
             <li style={{ marginBottom: "8px" }}>
+              If an internship is filled then delete it in My Uploaded Internships section
+            </li>
+            <li style={{ marginBottom: "8px" }}>
+              Before deleting internships ensure to reject all applicants (reccomended for student clarity)
+            </li>
+            <li style={{ marginBottom: "8px" }}>
               Recommended: Send an offer to one student and wait for a response (maximum 2 days). If no response, you may proceed with another candidate.
             </li>
             <li style={{ marginBottom: "8px" }}>

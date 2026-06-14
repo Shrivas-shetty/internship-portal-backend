@@ -9,7 +9,6 @@ export default function Internships() {
 
   useEffect(() => {
     API.get("/internships")
-      /* Safeguarded against non-array payloads using Array.isArray check */
       .then((res) => setInternships(Array.isArray(res.data) ? res.data : []))
       .catch((err) => console.error(err));
   }, []);
@@ -31,7 +30,7 @@ export default function Internships() {
       alert("Saved");
     } catch (err) {
       console.error(err);
-      const message=err.response?.data?.message || "Failed to save.";
+      const message = err.response?.data?.message || "Failed to save.";
       alert(message);
     }
   };
@@ -43,41 +42,91 @@ export default function Internships() {
   };
 
   return (
-    /* Outer container centering the content list down the middle of the screen */
-    <div style={{ display: "flex", flexDirection: "column", alignItems: "center", minHeight: "90vh", padding: "20px" }}>
-      
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        minHeight: "90vh",
+        padding: "20px",
+        width: "100%",
+        boxSizing: "border-box",
+      }}
+    >
+      {/* Header */}
       <div style={{ textAlign: "center", marginBottom: "20px" }}>
         <h1 style={{ margin: "0 0 10px 0" }}>All Internships</h1>
         <button onClick={handleBackNavigation} style={{ padding: "6px 12px" }}>
           Back to home
         </button>
       </div>
+
+      {/* No data */}
       {internships?.length === 0 && <p>No internships available.</p>}
 
+      {/* Internship Cards */}
       {internships?.map((i) => (
-        <div 
-          key={i._id} 
-          style={{ 
-            border: "1px solid #000", 
-            padding: "20px", 
-            width: "450px", 
-            marginBottom: "15px", 
-            textAlign: "left" 
+        <div
+          key={i._id}
+          style={{
+            border: "1px solid #000",
+            padding: "20px",
+            width: "100%",
+            maxWidth: "450px",
+            marginBottom: "15px",
+            textAlign: "left",
+            boxSizing: "border-box",
+            borderRadius: "8px",
+            backgroundColor: "#fff",
           }}
         >
           <h3 style={{ margin: "0 0 5px 0" }}>{i.title}</h3>
-          <p style={{ margin: "0 0 5px 0" }}><strong>Company : </strong> {i.company}</p>
-          <p style={{ margin: "0 0 5px 0" }}><strong>Location : </strong> {i.location}</p>
-          <p style={{ margin: "0 0 10px 0", fontSize: "14px", color: "#333" }}>{i.description}</p>
-          <p style={{ margin: "0 0 5px 0" }}><strong>Stipend(/month) : </strong> {i.stipend}</p>
-          <p style={{ margin: "0 0 15px 0" }}><strong>Duration:</strong> {i.duration}</p>
-          
+
+          <p style={{ margin: "0 0 5px 0" }}>
+            <strong>Company:</strong> {i.company}
+          </p>
+
+          <p style={{ margin: "0 0 5px 0" }}>
+            <strong>Location:</strong> {i.location}
+          </p>
+
+          <p
+            style={{
+              margin: "0 0 10px 0",
+              fontSize: "14px",
+              color: "#333",
+            }}
+          >
+            {i.description}
+          </p>
+
+          <p style={{ margin: "0 0 5px 0" }}>
+            <strong>Stipend (/month):</strong> {i.stipend}
+          </p>
+
+          <p style={{ margin: "0 0 15px 0" }}>
+            <strong>Duration:</strong> {i.duration}
+          </p>
+
           {role === "student" && (
-            <div style={{ display: "flex", gap: "10px" }}>
-              <button onClick={() => applyHandler(i._id)} style={{ padding: "5px 10px" }}>
+            <div
+              style={{
+                display: "flex",
+                gap: "10px",
+                flexWrap: "wrap",
+              }}
+            >
+              <button
+                onClick={() => applyHandler(i._id)}
+                style={{ padding: "6px 12px", cursor: "pointer" }}
+              >
                 Apply
               </button>
-              <button onClick={() => saveHandler(i._id)} style={{ padding: "5px 10px" }}>
+
+              <button
+                onClick={() => saveHandler(i._id)}
+                style={{ padding: "6px 12px", cursor: "pointer" }}
+              >
                 Save
               </button>
             </div>

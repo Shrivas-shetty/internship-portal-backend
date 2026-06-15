@@ -38,7 +38,7 @@ exports.getMySaved = async (req, res) => {
   const saves = await Saved.find({
     applicant: req.user._id,
   })
-    .populate("internship", "title company location")
+    .populate("internship", "_id title company location")
     .sort("-createdAt");
 
   res.status(200).json(saves);

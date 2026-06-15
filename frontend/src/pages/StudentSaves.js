@@ -65,7 +65,7 @@ export default function StudentSaves() {
           <p style={{ margin: "0 0 5px 0" }}><strong>Company:</strong> {s.internship?.company}</p>
           <p style={{ margin: "0 0 5px 0" }}><strong>Location:</strong> {s.internship?.location}</p>
           <p style={{ margin: "0", color: "#555" }}><strong>Status:</strong> {s.status || "Saved"}</p>
-          <button onClick={() => applyHandler(s.internship)} style={{ padding: "6px 12px", cursor: "pointer" }}>
+          <button onClick={() => applyHandler(s.internship._id)} style={{ padding: "6px 12px", cursor: "pointer" }}>
                 Apply
           </button>
         </div>

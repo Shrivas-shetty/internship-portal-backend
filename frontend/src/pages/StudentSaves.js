@@ -7,6 +7,18 @@ export default function StudentSaves() {
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
 
+
+  const applyHandler = async (id) => {
+    try {
+      await API.post(`/applications/${id}`);
+      alert("Applied");
+    } catch (err) {
+      console.error(err);
+      const message = err.response?.data?.message || "Failed to apply";
+      alert(message);
+    }
+  };
+
   useEffect(() => {
     API.get("/saves/mySaves")
       .then((res) => {
@@ -53,6 +65,9 @@ export default function StudentSaves() {
           <p style={{ margin: "0 0 5px 0" }}><strong>Company:</strong> {s.internship?.company}</p>
           <p style={{ margin: "0 0 5px 0" }}><strong>Location:</strong> {s.internship?.location}</p>
           <p style={{ margin: "0", color: "#555" }}><strong>Status:</strong> {s.status || "Saved"}</p>
+          <button onClick={() => applyHandler(s.internship)} style={{ padding: "6px 12px", cursor: "pointer" }}>
+                Apply
+          </button>
         </div>
       ))}
     </div>
